@@ -37,7 +37,7 @@ There are no requirements changes, major behavioral changes, or major API change
 - Refactor OSAL to reduce code duplication
 - Deprecated classic build in favor of cmake
 - Deconflicted performance IDs
-- Fixed various typos
+- Fixed various typos in variables, comments, prints
 - Removed CVS flags
 - Replaced deprecated references
 
@@ -80,8 +80,42 @@ This code was also built for and executed on the following targets:
 
 ### 1.2 NEW/CHANGED FUNCTIONALITY IN THIS VERSION ###
 
-#### [1.2.10 sch_lab](https://github.com/nasa/sch_lab) ####
-- Integration candidate: https://github.com/nasa/sch_lab/pull/13
+#### [1.2.6 tblCRCTool Closed to Version 1.1.0]() ####
+- 2.3.0 Integration Candidate: https://github.com/nasa/ci_lab/pull/12
+
+Pull | Issue | Summary | Contributor
+-- | -- | -- | --
+[#11](https://github.com/nasa/ci_lab/pull/11) | [#3](https://github.com/nasa/ci_lab/issues/3) | Deconflict Performance IDs | avan989
+
+#### [1.2.7 ci_lab Closed to Version 2.3.0](https://github.com/nasa/ci_lab/issues?q=is%3Aclosed+milestone%3A2.3.0) ####
+- 2.3.0 Integration Candidate: https://github.com/nasa/ci_lab/pull/12
+
+Pull | Issue | Summary | Contributor
+-- | -- | -- | --
+[#11](https://github.com/nasa/ci_lab/pull/11) | [#3](https://github.com/nasa/ci_lab/issues/3) | Deconflict Performance IDs | avan989
+[#10](https://github.com/nasa/ci_lab/pull/10) | [#5](https://github.com/nasa/ci_lab/issues/5) | Remove Classic Build | avan989
+[#9](https://github.com/nasa/ci_lab/pull/9) | [#4](https://github.com/nasa/ci_lab/issues/4) | Remove CVS Flags | avan989
+[#8](https://github.com/nasa/ci_lab/pull/8) | [#7](https://github.com/nasa/ci_lab/issues/7) | Replace Deprecated References | skliper
+
+#### [1.2.8 sample_app Closed to Version 1.1.0](https://github.com/nasa/sample_app/issues?q=is%3Aclosed+milestone%3A1.1.0) ####
+- 1.1.0 Integration Candidate: https://github.com/nasa/sample_app/pull/11
+
+Pull | Issue | Summary | Contributor
+-- | -- | -- | --
+[#10](https://github.com/nasa/sample_app/pull/10) | [#4](https://github.com/nasa/sample_app/issues/4) | Remove Classic Build | avan989
+[#9](https://github.com/nasa/sample_app/pull/9) | [#3](https://github.com/nasa/sample_app/issues/3) | Remove CVS Flags | avan989
+[#7](https://github.com/nasa/sample_app/pull/7) | [#6](https://github.com/nasa/sample_app/issues/6) | Replace Deprecated References | skliper
+
+#### [1.2.9 sample_lib Closed to Version 1.1.0](https://github.com/nasa/sample_lib/issues?q=is%3Aclosed+milestone%3A1.1.0) ####
+- 1.1.0 Integration Candidate: https://github.com/nasa/sample_lib/pull/6
+
+Pull | Issue | Summary | Contributor
+-- | -- | -- | --
+[#5](https://github.com/nasa/sample_lib/pull/5) | [#2](https://github.com/nasa/sample_lib/issues/2) | Remove Classic Build | avan989
+[#4](https://github.com/nasa/sample_lib/pull/4) | [#1](https://github.com/nasa/sample_lib/issues/1) | Remove CVS Flags | avan989
+
+#### [1.2.10 sch_lab Closed to Version 2.3.0](https://github.com/nasa/sch_lab/issues?q=is%3Aclosed+milestone%3A2.3.0) ####
+- 2.3.0 Integration Candidate: https://github.com/nasa/sch_lab/pull/13
 
 Pull | Issue | Summary | Contributor
 -- | -- | -- | --
@@ -90,8 +124,8 @@ Pull | Issue | Summary | Contributor
 [#8](https://github.com/nasa/sch_lab/pull/8) | [#3](https://github.com/nasa/sch_lab/issues/3) | Remove CVS Flags | avan989
 [#7](https://github.com/nasa/sch_lab/pull/7) | [#6](https://github.com/nasa/sch_lab/issues/6) | Replace Deprecated References | skliper
 
-#### [1.2.11 to_lab](https://github.com/nasa/to_lab) ####
-- Integration candidate: https://github.com/nasa/to_lab/pull/13
+#### [1.2.11 to_lab Closed to Version 2.3.0](https://github.com/nasa/to_lab/issues?q=is%3Aclosed+milestone%3A2.3.0) ####
+- 2.3.0 Integration Candidate: https://github.com/nasa/to_lab/pull/13
 
 Pull | Issue | Summary | Contributor
 -- | -- | -- | --
