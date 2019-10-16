@@ -61,6 +61,10 @@ There are no requirements changes or major behavioral changes in this release.
     - Initialize structure passed into mq_open
     - Fix Lookup on nonexistent symbol in RTEMS
     - Avoid continuous loop in timebase thread
+  - cFE
+    - String manipulation fixes
+    - Eliminated potential lockup from CFE_TIME_GetReference call from interrupt context
+    - Fix Unknown State Error After App Exit
 
 #### Document and Other Non-FSW Updates ####
 - Removed non-ascii characters in text files
@@ -72,6 +76,8 @@ There are no requirements changes or major behavioral changes in this release.
 - Updated directory names
 - Added unit test stub functions where needed
 - Update unit test framework
+- Removed proprietary ground system related files
+- Added naming convention document
 
 #### Marked for Deprecation (will be removed in future release) ####
 Define OSAL_OMIT_DEPRECATED and CFE_OMIT_DEPRECATED_6_6 to check for compliance.
@@ -112,6 +118,35 @@ This code was also built for and executed on the following targets:
 -	Raspberry Pi Docker armv6 32 bit Alpine Linux ( using OSAL_DEBUG_PERMISSIVE_MODE )
 
 ### 1.2 NEW/CHANGED FSW IN THIS VERSION ###
+
+#### 1.2.1 cFE Closed to Version 6.7.0: https://github.com/nasa/cfe/issues?q=milestone%3A6.7.0 ####
+- 6.7.0 Updates managed in Babelfish (no GitHub pull references)
+  - Merge and Commit are Babelfish references, Issues are GitHub references (transfered from Babelfish)
+
+Merge | Commit | Issue | Summary | Contributor
+-- | -- | -- | -- | --
+43717d3 | 1d4b669 | [#353](https://github.com/nasa/cFE/issues/353) | Replace Deprecated Memory API References | jphickey
+116fb1b | 8fde72f | [#348](https://github.com/nasa/cFE/issues/348) | Update Enhanced Version Reporting | skliper
+116fb1b | d7bc04b | [#349](https://github.com/nasa/cFE/issues/349) | Remove ENHANCED_BUILD Switch | jphickey
+b34d281 | a5319c4 | [#345](https://github.com/nasa/cFE/issues/345) | Remove Conditional Backwards Compatibility | jphickey
+43717d3 | 04d32e5 | [#350](https://github.com/nasa/cFE/issues/350) | Use C99 Boolean Types | jphickey
+43717d3 | bd1ede0 | [#319](https://github.com/nasa/cFE/issues/319) | Update Headers for Copyright/License | skliper
+b9373ec | af19b29 | [#347](https://github.com/nasa/cFE/issues/347) | Remove CVS Flags | skliper
+b9373ec | dddcc4a | [#269](https://github.com/nasa/cFE/issues/269) | Fix Doxygen Comments | skliper
+b9373ec | 5bdf7eb | [#330](https://github.com/nasa/cFE/issues/330) | Remove Duplicate CFE_PLATFORM_ES_APP_KILL_TIMEOUT | skliper
+1d9be2b | 961b83f | [#340](https://github.com/nasa/cFE/issues/340) | Remove Duplicate Time State Flag Logic | skliper
+1d9be2b | fdb31c4 | [#282](https://github.com/nasa/cFE/issues/282) | Restore Last Load File from CDS | skliper
+ceaefb3 | bc1240d | [#329](https://github.com/nasa/cFE/issues/329) | Replace Deprecated References | jphickey
+e7b422c | 7136c43 | [#116](https://github.com/nasa/cFE/issues/116) | Cleanup From Coverage Testing | jphickey
+a1154fa | 65fa061 | [#89](https://github.com/nasa/cFE/issues/89) | Fix Unknown State Error After App Exit | jphickey
+44b9f7b | 72f96eb | [#262](https://github.com/nasa/cFE/issues/262) | Set Address Validity FALSE if Tlm Address Size Too Small | jphickey
+44b9f7b | a335c57 | [#310](https://github.com/nasa/cFE/issues/310) | Ring Buffer for Time Reference Data | jphickey
+NA | 47014d5 | [#279](https://github.com/nasa/cFE/issues/279) | Simplify app record State Tracking | jphickey
+007b4ac | fcfcb29 | [#280](https://github.com/nasa/cFE/issues/280) | Clean ES Static Linkage Support | jphickey
+6c713dd | 5c719c4 | [#270](https://github.com/nasa/cFE/issues/270) | Resolve Build Warnings Code Review Updates | jphickey
+6c713dd | 4bd7b9b | [#281](https://github.com/nasa/cFE/issues/281) | Fix CFE_SB API types | jphickey
+6c713dd | 1ee6bb5 | [#276](https://github.com/nasa/cFE/issues/276) | Fix String Manipulation | jphickey
+6c713dd | 768e685 | [#270](https://github.com/nasa/cFE/issues/270) | Resolve Build Warnings | jphickey
 
 #### 1.2.2 OSAL Closed to Version 5.0.0: https://github.com/nasa/osal/issues?q=milestone%3A5.0.0 ####
 - 5.0.0 Updates managed in Babelfish (no GitHub pull references)
@@ -156,6 +191,7 @@ Merge | Commit | Issue | Summary | Contributor
 5df03c6 | 9f873e0 | [#105](https://github.com/nasa/psp/issues/105) | Scrub cfe_platform_cfg.h References | jphickey
 5df03c6 | 8ebf0aa | [#104](https://github.com/nasa/psp/issues/104) | Remove CFE_PSP_SUBMINOR_VERSION Define | skliper
 b54acc6 | 5ac3a2a | [#106](https://github.com/nasa/psp/issues/106) | Remove ENHANCED_BUILD Switch | jphickey
+5df03c6 | 39c90cd | [#98](https://github.com/nasa/psp/issues/98) | Update Headers for Copyright/License | skliper
 bf35c18 | 94f4474 | [#101](https://github.com/nasa/psp/issues/101) | Remove CVS Flags | skliper
 183a8f3 | 8a38cd6 | [#28](https://github.com/nasa/psp/issues/28) | PSP Panic if OS_API_Init Fails | jphickey
 183a8f3 | cd39b8c | [#99](https://github.com/nasa/psp/issues/99) | Remove OS_printf Calls Prior to OS_API_Init | jphickey
