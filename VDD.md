@@ -32,10 +32,13 @@ Application verification against this version are documented on the https://gith
 Lab Tools and Lab Applications are also dependent on the latest releases and not generally
 backwards compatible.  The released bundle associates the versions that have been tested together.
 
-There are no requirements changes, major behavioral changes, or major API changes in this release.
+There are no requirements changes or major behavioral changes in this release.
 
 #### Summary of FSW changes ####
 - Refactor OSAL to reduce code duplication
+- Added OSAL file system abstraction APIs, marked old wrappers as deprecated
+- Added OSAL socket and select APIs
+- Support asynchronous console output
 - Deconflicted performance IDs in lab applications
 - Fixed various typos in variables, comments, prints
 - Removed CVS flags
@@ -47,12 +50,17 @@ There are no requirements changes, major behavioral changes, or major API change
 - Startup now fails if OS API initialization fails
 - Update PSP timebase support
 - Removed CFE_PSP_SUBMINOR_VERSION define
+- Minor OS API type fixes (const where needed, signed vs unsigned, etc)
 - Minor bug fixes
   - PSP
     - Resolved race condition in PSP timer callbacks
     - Fixed MCP750 FPU exception behavior
     - String manipulation fixes
     - Removed OS_printf calls prior to OS_API_Init
+  - OSAL
+    - Initialize structure passed into mq_open
+    - Fix Lookup on nonexistent symbol in RTEMS
+    - Avoid continuous loop in timebase thread
 
 #### Document and Other Non-FSW Updates ####
 - Removed non-ascii characters in text files
@@ -60,8 +68,10 @@ There are no requirements changes, major behavioral changes, or major API change
 - Scripts set as executable
 - Removed unused files/directories
 - Removed classic build support in favor of cmake (and updated support where needed)
+- Improve cmake support for using c++ flags
 - Updated directory names
 - Added unit test stub functions where needed
+- Update unit test framework
 
 #### Marked for Deprecation (will be removed in future release) ####
 Define OSAL_OMIT_DEPRECATED and CFE_OMIT_DEPRECATED_6_6 to check for compliance.
@@ -103,8 +113,41 @@ This code was also built for and executed on the following targets:
 
 ### 1.2 NEW/CHANGED FSW IN THIS VERSION ###
 
+#### 1.2.2 OSAL Closed to Version 5.0.0: https://github.com/nasa/osal/issues?q=milestone%3A5.0.0 ####
+- 5.0.0 Updates managed in Babelfish (no GitHub pull references)
+  - Merge and Commit are Babelfish references, Issues are GitHub references (transfered from Babelfish)
+
+Merge | Commit | Issue | Summary | Contributor
+-- | -- | -- | -- | --
+63ed8a2 | fd8ce5e | [#231](https://github.com/nasa/osal/issues/231) | VxWorks Refactor Code Review Updates | jphickey
+d70e914 | 382d5ce | [#258](https://github.com/nasa/osal/issues/258) | Replace Deprecated References | skliper
+63ed8a2 | 634c86e | [#231](https://github.com/nasa/osal/issues/231) | Complete VxWorks Refactor | jphickey
+22d33aa | b686fd2 | [#251](https://github.com/nasa/osal/issues/251) | Mark boolean/osalbool Deprecated | jphickey
+d70e914 | 8f58348 | [#260](https://github.com/nasa/osal/issues/260) | Remove Unused Variables | jphickey
+22d33aa | 75161ec | [#257](https://github.com/nasa/osal/issues/257) | Update Abstraction Comments | skliper
+072d25b | f9b9aa5 | [#223](https://github.com/nasa/osal/issues/223) | Remove Conditional Backwards Compatibility | jphickey
+05a9f42 | ff68cb3 | [#253](https://github.com/nasa/osal/issues/253) | Remove CVS Flags | skliper
+3382fb8 | de84853 | [#249](https://github.com/nasa/osal/issues/249) | Remove Custom Fixed Size Types | jphickey
+d5c9c27 | 48b36e5 | [#245](https://github.com/nasa/osal/issues/245) | Support Asynchronous Console Output | jphickey
+41b9819 | 3a9d79c | [#108](https://github.com/nasa/osal/issues/108) | Improve Filesystem Abstraction APIs | jphickey
+3382fb8 | 3c2a4f6 | [#247](https://github.com/nasa/osal/issues/247) | Update host_module_id to Use cpuaddr | jphickey
+2995761 | fc64d0f | [#67](https://github.com/nasa/osal/issues/67) | Clean Priority Inheritance Conditionals | jphickey
+2995761 | 7190406 | [#64](https://github.com/nasa/osal/issues/64) | Remove Backtrace Hooks | jphickey
+41b9819 | 614cdd3 | [#242](https://github.com/nasa/osal/issues/242) | Add Search Lookups to Shared Layer | jphickey
+2995761 | dc4b353 | [#243](https://github.com/nasa/osal/issues/243) | Remove system Call in OS_ShellOutputToFile | jphickey
+d5c9c27 | ea7dc6d | [#246](https://github.com/nasa/osal/issues/246) | Add Timeout in timebase Wait | jphickey
+2995761 | c1c0e3b | [#244](https://github.com/nasa/osal/issues/244) | Fix Lookup on Nonexistent Symbol in RTEMS | jphickey
+NA | ff0e833 | [#234](https://github.com/nasa/osal/issues/234) | Resolve Build Errors | jphickey
+38635a5 | 92b7dfa | [#205](https://github.com/nasa/osal/issues/205) | Initialize Structure Passed to mq_open | sseeger
+NA | 0885ffb | [#227](https://github.com/nasa/osal/issues/227) | Resolve cppcheck Warnings | jphickey
+NA | 6df485b | [#28](https://github.com/nasa/osal/issues/28) | Add Socket and Select APIs | jphickey
+NA | ea71258 | [#28](https://github.com/nasa/osal/issues/28) | Refactor POSIX and RTEMS With Shared Layer | jphickey
+b4e2c25 | dde418e | [#215](https://github.com/nasa/osal/issues/215) | Use C99 Boolean Types | jphickey
+18f7064 | 1ce6536 | [#35](https://github.com/nasa/osal/issues/35) | Update Filesystem Abstraction APIs | jphickey
+18f7064 | dde418e | [#212](https://github.com/nasa/osal/issues/212) | Fix OS API types | jphickey
+
 #### 1.2.3 PSP Closed to Version 1.4.0: https://github.com/nasa/psp/issues?q=milestone%3A1.4.0 ####
-- 1.4.0 Updates done internally on Babelfish (no GitHub pull references)
+- 1.4.0 Updates managed in Babelfish (no GitHub pull references)
   - Merge and Commit are Babelfish references, Issues are GitHub references (transfered from Babelfish)
 
 Merge | Commit | Issue | Summary | Contributor
