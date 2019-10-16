@@ -279,4 +279,32 @@ Pull | Issue | Summary | Contributor
 [#9](https://github.com/nasa/to_lab/pull/9) | [#4](https://github.com/nasa/to_lab/issues/4) | Remove CVS Flags | avan989
 [#8](https://github.com/nasa/to_lab/pull/8) | [#7](https://github.com/nasa/to_lab/issues/7) | Replace Deprecated References | skliper
 
-### TBD ###
+### 1.3 MISSING PLANNED FEATURES AND KNOWN PROBLEMS ###
+Major future work is detailed on the https://github.com/nasa/cfs README.  Bugs and enhancement requests are detailed in the repo issues.
+
+### 1.4 DEVELOPMENT TOOL VERSIONS ASSOCIATED WITH THIS FSW VERSION ###
+- Linux
+  - Ubuntu 16.04.6 LTS
+  - gcc 5.4.0 20160609
+- RTOS
+  - VxWorks 6.9
+  - ccppc 4.3.3
+
+### 1.5 EXTERNAL DOCUMENT DEPENDENCIES ###
+NA - All documents associated with this release are included in the repository or attached to the release.
+
+## 2.0 DELIVERED PRODUCTS ##
+
+TBD
+
+## 3.0 INSTALLATION PROCEDURES ##
+Quick start steps are detailed on the https://github.com/nasa/cfs README.
+
+## 4.0 CONFIGURATION SUMMARY AND VERSION IDENTIFICATION ##
+Default configuration is provided in cfe/cmake/sample_defs directory.
+
+Version numbers are all reported upon execution.
+
+
+
+  
