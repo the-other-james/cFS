@@ -91,8 +91,10 @@ VxWorks OSAL coverage TBD
 Functional TBD
 
 #### Build Verification Testing ####
-The cFE 6.7.0 build was tested by Walt Moleski in the cFS Lab using the mcp750 target with VxWorks 6.9.
-Testing was completed on 10/8/2019.
+The cFE 6.7.0 build verification was performed against the code tag 6.7.0-bv.  It was tested by Walt Moleski
+in the cFS Lab using the mcp750 target with VxWorks 6.9.  Testing was completed on 10/8/2019.  Note header 
+and document changes may occur after the 6.7.0-bv tag, and are included in the official release.  This verification
+does not imply any fitness for use per the associated licencing.
 
 There were 17 Build Verification tests executed and they all passed. Three (3) alternate image configuration
 tests were NOT executed since they required a separate compilation of the cFE using different values for 
@@ -295,7 +297,23 @@ NA - All documents associated with this release are included in the repository o
 
 ## 2.0 DELIVERED PRODUCTS ##
 
-TBD
+All delivered products are contained in or linked by the bundle repo at https://github.com/nasa/cFS.  Reference below are relative this bundle.  The "release package" includes files linked to the release.
+
+Software Element | Changed | Version/Date | Location
+-- | -- | -- | --
+Executable(s) | N/A | N/A | Not open source deliverable
+Installation Procedures | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS) README.md TBD (actual link)
+Source Code of this FSW Build | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS) v6.7.0 TBD (actual link!)
+FSW Build Plan | N/A | N/A | Maintenance mode, rolling ~6 month releases based on funding/contributions
+Design Docs | Yes | 6.7.0 | See element doc directories
+Ground System T&C Database | No | 2.1.0 | See [cFS-GroundSystem](https://github.com/nasa/cFS-GroundSystem)
+Ground System Scripts | N/A | N/A | Not open source deliverable
+Ground Tools | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS)
+Unit Test Procedures | Yes | N/A | See Unit Testing in this doc
+Unit Test Data | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS)
+Unit Test Results | Yes | 6.7.0 | [Release](https://ghithub.com/nasa/cFS) v6.7.0 TBD (actual link!)
+FSW Make Files | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS)
+Linker & Complier Configuration Files | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS)
 
 ## 3.0 INSTALLATION PROCEDURES ##
 Quick start steps are detailed on the https://github.com/nasa/cfs README.
@@ -303,7 +321,7 @@ Quick start steps are detailed on the https://github.com/nasa/cfs README.
 ## 4.0 CONFIGURATION SUMMARY AND VERSION IDENTIFICATION ##
 Default configuration is provided in cfe/cmake/sample_defs directory.
 
-Version numbers are all reported upon execution.
+Version numbers are all reported upon execution and available in telemetry.
 
 
 
