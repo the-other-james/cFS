@@ -83,11 +83,55 @@ There are no requirements changes or major behavioral changes in this release.
 Define OSAL_OMIT_DEPRECATED and CFE_OMIT_DEPRECATED_6_6 to check for compliance.
 In general, replacements are detailed in associated API headers or are no longer needed by underlying software.
 
-#### Unit Testing ####
-Unit - steps, results, coverage TBD
+#### Unit Testing On Host (Ubuntu 16.04.6 LTS) ####
+At the cFS level, the following tests can be run on the host:
+- OSAL tests (osal/src/tests)
+  - count-sem-test, sem-speed-test, mutex-test, bin-sem-timeout-test, queue-timeout-test, bin-sem-flush-test, 
+  osal-core-test, file-api-test, bine-sem-test, symbol-api-test, timer-test
+- OSAL unit tests (osal/src/unit-tests)
+  - osal_core_UT, osal_loader_UT, osal_filesys_UT, osal_file_UT, osal_network_UT, osal_timer_UT
+- cFE unit tests (cfe/fsw/cfe-core/unit-tests)
+  - es_UT, sb_UT, evs_UT, tbl_UT, time_UT, fs_UT
 
+Procedure:
+- Start with standard setup detailed on cFS README (set PERMISSIVE mode if needed)
+- (Re)do prep, build, install, test, and report coverage with unit tests enabled
+  ```
+  make distclean
+  make ENABLE_UNIT_TESTS=TRUE SIMULATION=native prep
+  make
+  make install
+  make test
+  make lcov
+  ```
+- Note the osal_timer_UT test frequently fails on Linux, re-execute should eventually pass
+
+Current cFE coverage rate (includes unit test code and stubs, and not a true coverage against baseline of all files):
+- lines......: 92.6% (20233 of 21841 lines)
+- functions..: 95.9% (827 of 862 functions)
+
+See the attached console and results files attached to the release (ENABLE_UNIT_TESTS_*).
+
+At the OSAL level, the following tests can be run on the host:
+- OSAL coverage tests for the shared layer (osal/src/unit-test-coverage/shared):
+  - shared-binsem, shared-clock, shared-common, shared-countsem, shared-dir, shared-errors, shared-file, 
+  shared-filesys, shared-fpu, shared-heap, shared-idmap, shared-interrupts, shared-module, shared-mutex, 
+  shared-network, shared-printf, shared-queue, shared-select, shared-sockets, shared-task, shared-timebase, 
+  shared-time
+- Note other OSALS coverage tests (posix-ng/vxworks6/vxworks-ng) were not executed on this release
+
+Procedure:
+  - From a fresh directory to build tests (used build_osal_cov in cFS below)
+  ```
+  cmake -DCMAKE_BUILD_TYPE=debug -DOSALCOVERAGE_TARGET_OSTYPE='shared' -DOSAL_INCLUDEDIR=../bsp/pc-linux/config/ ../osal/src/unit-test-coverage/
+  make
+  make test
+  ```
+TBD coverage report (really based on including the c code in ut wrappers, so not true coverage vs baseline).
 VxWorks OSAL coverage TBD
 
+
+#### Unit Testing On Target (MCP750, VxWorks 6.9) ####
 Functional TBD
 
 #### Build Verification Testing ####
