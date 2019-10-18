@@ -110,7 +110,7 @@ Current cFE coverage rate (includes unit test code and stubs, and not a true cov
 - lines......: 92.6% (20233 of 21841 lines)
 - functions..: 95.9% (827 of 862 functions)
 
-See the attached console and results files attached to the release (ENABLE_UNIT_TESTS_*).
+See the console and results files attached to the release (ENABLE_UNIT_TESTS_*).
 
 At the OSAL level, the following tests can be run on the host:
 - OSAL coverage tests for the shared layer (osal/src/unit-test-coverage/shared):
@@ -121,15 +121,25 @@ At the OSAL level, the following tests can be run on the host:
 - Note other OSALS coverage tests (posix-ng/vxworks6/vxworks-ng) were not executed on this release
 
 Procedure:
-  - From a fresh directory to build tests (used build_osal_cov in cFS below)
+  - From the base cFS directory:
   ```
+  /bin/rm -rf build_osal_cov
+  mkdir build_osal_cov
+  cd build_osal_cov
   cmake -DCMAKE_BUILD_TYPE=debug -DOSALCOVERAGE_TARGET_OSTYPE='shared' -DOSAL_INCLUDEDIR=../bsp/pc-linux/config/ ../osal/src/unit-test-coverage/
   make
+  lcov --capture --initial --directory ./ --output-file coverage_base.info
   make test
+  lcov --capture --directory ./ --output-file coverage_test.info
+  lcov --add-tracefile coverage_base.info --add-tracefile coverage_test.info --output-file coverage_total.info
+  lcov --remove coverage_total.info 'unit-test-coverage/*' --output-file coverage_filtered.info
+  genhtml coverage_filtered.info --output-directory lcov
   ```
-TBD coverage report (really based on including the c code in ut wrappers, so not true coverage vs baseline).
-VxWorks OSAL coverage TBD
+Current OSAL coverage rate of shared layer (based on including the c code in ut wrappers):
+  lines......: 94.6% (1790 of 1892 lines)
+  functions..: 99.5% (193 of 194 functions)
 
+See the console and results files attached to the release (OSAL_COVERAGE_*).
 
 #### Unit Testing On Target (MCP750, VxWorks 6.9) ####
 Functional TBD
@@ -349,7 +359,7 @@ Executable(s) | N/A | N/A | Not open source deliverable
 Installation Procedures | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS) README.md TBD (actual link)
 Source Code of this FSW Build | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS) v6.7.0 TBD (actual link!)
 FSW Build Plan | N/A | N/A | Maintenance mode, rolling ~6 month releases based on funding/contributions
-Design Docs | Yes | 6.7.0 | See element doc directories
+Design Docs | Yes | 6.7.0 | See element doc directories and TBD documents attached to release
 Ground System T&C Database | No | 2.1.0 | See [cFS-GroundSystem](https://github.com/nasa/cFS-GroundSystem)
 Ground System Scripts | N/A | N/A | Not open source deliverable
 Ground Tools | Yes | 6.7.0 | [Bundle](https://ghithub.com/nasa/cFS)
