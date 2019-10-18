@@ -27,7 +27,8 @@ This is a release of the core Flight System (cFS) Framework elements as follows:
   - **Schedular: [sch_lab](https://github.com/nasa/sch_lab)** - Version 2.3.0
   - **Telemetry Output: [to_lab](https://github.com/nasa/to_lab)** - Version 2.3.0
 
-Backwards or cross compatibility is not supported between the cFE, OSAL, and PSP.
+Backwards or cross compatibility is not supported between the cFE, OSAL, and PSP for this release.
+Recommendation is to update all or none.
 Application verification against this version are documented on the https://github.com/nasa/cFS/.
 Lab Tools and Lab Applications are also dependent on the latest releases and not generally
 backwards compatible.  The released bundle associates the versions that have been tested together.
@@ -136,13 +137,37 @@ Procedure:
   genhtml coverage_filtered.info --output-directory lcov
   ```
 Current OSAL coverage rate of shared layer (based on including the c code in ut wrappers):
-  lines......: 94.6% (1790 of 1892 lines)
-  functions..: 99.5% (193 of 194 functions)
+- lines......: 94.6% (1790 of 1892 lines)
+- functions..: 99.5% (193 of 194 functions)
 
 See the console and results files attached to the release (OSAL_COVERAGE_*).
 
 #### Unit Testing On Target (MCP750, VxWorks 6.9) ####
-Functional TBD
+The same set of OSAL unit tests (built with ENABLE_UNIT_TESTS=TRUE) as above were cross compiled for the MCP750, VxWorks 6.9
+target and executed following the steps below:
+- Brought in toolchain file (from master repo, toolchain-ppc-vxworks6.9.cmake)
+- Added `SET(TGT1_SYSTEM ppc-vxworks6.9)` to targets.cmake
+  ```
+  /opt/WindRiver/wrenv.sh -pvxworks-6.9
+  make ENABLE_UNIT_TESTS=TRUE prep
+  make
+  make install
+  ```
+- Loaded files to target `ncftpput ... CF:0/apps-rc build/exe/cpu1/*.exe`
+- Connected to target `minicom cpu3`
+- Execute tests
+  ```
+  ld < bin-sem-flush-test.exe
+  RunTest
+  unld("bin-sem-flush-test.exe)
+  ```
+  ... (and so on for all tests)
+NOTE - some tests require a reboot to function correctly (unld doesn't clean up after the test)
+
+All passed except sem-speed-test.exe (exception at interrupt level), and 2 of the timer tests were slightly under tolerance
+(2 of 25 failed).
+
+See the concole file attached to the release (TARGET_TESTS_console.txt).
 
 #### Build Verification Testing ####
 The cFE 6.7.0 build verification was performed against the code tag 6.7.0-bv.  It was tested by Walt Moleski
