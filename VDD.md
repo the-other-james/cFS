@@ -361,7 +361,16 @@ Pull | Issue | Summary | Contributor
 [#8](https://github.com/nasa/to_lab/pull/8) | [#7](https://github.com/nasa/to_lab/issues/7) | Replace Deprecated References | skliper
 
 ### 1.3 MISSING PLANNED FEATURES AND KNOWN PROBLEMS ###
-Major future work is detailed on the https://github.com/nasa/cfs README.  Bugs and enhancement requests are detailed in the repo issues.
+Major future work is detailed on the https://github.com/nasa/cfs README.  
+Current identified bugs and enhancement requests are detailed in the repo issues.
+
+Significant bugs identified and resolved in current development version (will be in next release):
+- https://github.com/nasa/cFE/pull/376: Lockup on log file write
+- https://github.com/nasa/osal/pull/278: Possible deadlock of timer callback
+- https://github.com/nasa/osal/pull/277: Correct interval time calculations
+
+Note this list is current as of VDD submittal, other bugs may be identified and resolved as part of the
+development process/release cycle.
 
 ### 1.4 DEVELOPMENT TOOL VERSIONS ASSOCIATED WITH THIS FSW VERSION ###
 - Linux
