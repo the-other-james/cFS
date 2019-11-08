@@ -14,14 +14,6 @@
 	path = apps/ci_lab
 	url = https://github.com/nasa/ci_lab.git
         branch = master
-[submodule "apps/sample_app"]
-	path = apps/sample_app
-	url = https://github.com/nasa/sample_app.git
-        branch = master
-[submodule "apps/sample_lib"]
-	path = apps/sample_lib
-	url = https://github.com/nasa/sample_lib.git
-        branch = master
 [submodule "apps/sch_lab"]
 	path = apps/sch_lab
 	url = https://github.com/nasa/sch_lab.git
@@ -42,3 +34,21 @@
 	path = tools/tblCRCTool
 	url = https://github.com/nasa/tblCRCTool.git
         branch = master
+[submodule "apps/cf"]
+	path = apps/cf
+	url = https://github.com/nasa/cf
+[submodule "apps/ds"]
+	path = apps/ds
+	url = https://github.com/nasa/ds
+[submodule "apps/hk"]
+	path = apps/hk
+	url = https://github.com/nasa/hk
+[submodule "apps/hs"]
+	path = apps/hs
+	url = https://github.com/nasa/hs
+[submodule "apps/fm"]
+	path = apps/fm
+	url = https://github.com/nasa/fm
+[submodule "apps/md"]
+	path = apps/md
+	url = https://github.com/nasa/md
