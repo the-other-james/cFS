@@ -42,3 +42,6 @@
 	path = tools/tblCRCTool
 	url = https://github.com/nasa/tblCRCTool.git
         branch = master
+[submodule "apps/blinking_cylon"]
+	path = apps/blinking_cylon
+	url = https://github.com/the-other-james/blinking_cylon.git
