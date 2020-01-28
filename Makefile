@@ -70,7 +70,7 @@ endif
 
 # The "LOCALTGTS" defines the top-level targets that are implemented in this makefile
 # Any other target may also be given, in that case it will simply be passed through.
-LOCALTGTS := doc prep all clean install distclean test lcov
+LOCALTGTS := doc prep all clean install distclean test lcov update_tables
 OTHERTGTS := $(filter-out $(LOCALTGTS),$(MAKECMDGOALS))
 
 # As this makefile does not build any real files, treat everything as a PHONY target
@@ -120,6 +120,9 @@ prep $(O)/.prep:
 	mkdir -p "$(O)"
 	(cd "$(O)/$(BUILDDIR)" && cmake $(PREP_OPTS) "$(CURDIR)/cfe")
 	echo "$(PREP_OPTS)" > "$(O)/.prep"  
+
+update_tables:
+	cp python_demo_defs/sbn_conf_tbl.c apps/sbn/fsw/tables/sbn_conf_tbl.c
 
 clean:
 	$(MAKE) --no-print-directory -C "$(O)" mission-clean
