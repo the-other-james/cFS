@@ -4,8 +4,8 @@ set(ONAIR_INSTALL_SUB onair)
 set(ONAIR_SOURCE_DIR "onair/")
 set(ONAIR_SOURCE_ADDITIONAL
     message_headers.py
-    s_o_TLM_CONFIG.json
-    s_o.ini
+    cfs_sample_app_TLM_CONFIG.json
+    cfs_sample_app.ini
     ../sbn_client/fsw/python_interface/sbn_python_client.py
     )
 
